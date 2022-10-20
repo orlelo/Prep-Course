@@ -31,7 +31,7 @@ describe('agregarMetodoPrototype(Constructor)', function() {
 	});
 });
 
-describe('agregarStringInvertida(StringPrototype)', function(){
+xdescribe('agregarStringInvertida(StringPrototype)', function(){
 	it('should add a reverse string method to the String prototype that returns a reversed version of the string', function() {
 		agregarStringInvertida();
 		const str = 'Hello';
