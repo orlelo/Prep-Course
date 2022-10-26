@@ -4,17 +4,20 @@ function mayuscula(nombre) {
   //La función recibe un nombre y debe devolver el mismo que recibe pero con su primer letra en mayúscula
   //ej: Recibe "mario" ----> Devuelve "Mario"
   //Tu código:
+  return nombre.charAt(0).toUpperCase() + nombre.slice(1);
 }
 
 function invocarCallback(cb) {
   // Invoca al callback `cb`
   //Tu código:
+  cb();
 }
 
 function operacionMatematica(n1, n2, cb) {
   //Vamos a recibir una función que realiza una operación matemática como callback junto con dos números.
   //Devolver el callback pasándole como argumentos los números recibidos.
   //Tu código:
+  return cb(n1, n2);
 }
 
 function sumarArray(numeros, cb) {
@@ -22,12 +25,28 @@ function sumarArray(numeros, cb) {
   // Pasa el resultado a `cb`
   // No es necesario devolver nada
   //Tu código:
+  var suma = 0;
+  /*for (var i = 0; i < numeros.length; i++) {
+   ! suma += numeros[i];
+  }
+  cb(suma); */
+  numeros.forEach((elemento) => {
+    suma = suma + elemento;
+  });
+  cb(suma);
 }
 
 function forEach(array, cb) {
   // Itera sobre la matriz "array" y pasa los valores al callback uno por uno
   // Pista: Estarás invocando a `cb` varias veces (una por cada valor en la matriz)
   //Tu código:
+  array.forEach((elemento) => {
+    cb(elemento);
+  })
+/* 
+  for(var i = 0; i < array.length; i++) {
+    cb(array[i]);
+  } */
 }
 
 function map(array, cb) {
@@ -35,13 +54,42 @@ function map(array, cb) {
   // Itera sobre cada valor en "array", pásalo a `cb` y luego ubicar el valor devuelto por `cb` en un nuevo array
   // El nuevo array debe tener la misma longitud que el array del argumento
   //Tu código:
+
+/*   var nuevoArray = [];
+  for(var i = 0; i < array.length; i++){
+    nuevoArray.push(cb(array[i]));
+  }
+  return nuevoArray; */
+
+  var nuevoArray = array.map(function (e) {
+    return cb(e);
+  });
+  return nuevoArray;
 }
 
 function filter(array) {
   //Filtrar todos los elementos del array que comiencen con la letra "a".
   //Devolver un nuevo array con los elementos que cumplen la condición
   //Tu código:
+/*   var nuevoArray = [];
+  for(var i of array){
+    if(i[0] === 'a') nuevoArray.push(i)
+  };
+  return nuevoArray; */
+
+  return array.filter(function (elemento) {
+    return elemento[0] == "a";
+  });
+
 }
+
+/* el bucle for of itera directamente dentro del array y va copiando en cada valor en cada
+iteracion el valor del primero, lo usa y lo desecha, luego pasa al siguiente. copiar, usar, desechar. 
+este bucle ejecuta un bloque de codigo por cada elemento iterable, de un array o una palabra.
+ejecuta directamente un codigo elemento por elemento del array.*/
+
+/* no todo se resuelve con metodos, por eso es mejor saber como funcionan
+los bucles, para poder utilizarlos y contar con ese conocimiento, no limitarse. */
 
 // No modificar nada debajo de esta línea
 // --------------------------------
